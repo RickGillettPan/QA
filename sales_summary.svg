@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+<rect width="100%" height="100%" fill="#f4f7fb"/>
+<text x="40" y="58" fill="#172b4d" font-family="Arial, sans-serif" font-size="30" font-weight="700">Sales performance</text>
+<text x="42" y="88" fill="#52647a" font-family="Arial, sans-serif" font-size="14">Revenue and units across 20 rows with usable quantity and price</text>
+<rect x="36" y="132" width="592" height="286" rx="14" fill="#ffffff" stroke="#dce4ee"/>
+<text x="58" y="168" fill="#172b4d" font-family="Arial, sans-serif" font-size="19" font-weight="700">Sales by region</text>
+<text x="58" y="193" fill="#718096" font-family="Arial, sans-serif" font-size="11">BAR LENGTH = REVENUE · UNITS AND SALES SHOWN AT RIGHT</text>
+<text x="58" y="230" fill="#334155" font-family="Arial, sans-serif" font-size="12">Glasgow</text>
+<rect x="204" y="218" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="218" width="112.0" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="230" fill="#334155" font-family="Arial, sans-serif" font-size="11">27 units · £1097.27 · 7 sales</text>
+<text x="58" y="259" fill="#334155" font-family="Arial, sans-serif" font-size="12">Dundee</text>
+<rect x="204" y="247" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="247" width="71.8" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="259" fill="#334155" font-family="Arial, sans-serif" font-size="11">21 units · £703.61 · 4 sales</text>
+<text x="58" y="288" fill="#334155" font-family="Arial, sans-serif" font-size="12">Aberdeen</text>
+<rect x="204" y="276" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="276" width="87.2" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="288" fill="#334155" font-family="Arial, sans-serif" font-size="11">18 units · £854.23 · 5 sales</text>
+<text x="58" y="317" fill="#334155" font-family="Arial, sans-serif" font-size="12">Edinburgh</text>
+<rect x="204" y="305" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="305" width="60.9" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="317" fill="#334155" font-family="Arial, sans-serif" font-size="11">17 units · £596.20 · 4 sales</text>
+<rect x="652" y="132" width="592" height="286" rx="14" fill="#ffffff" stroke="#dce4ee"/>
+<text x="674" y="168" fill="#172b4d" font-family="Arial, sans-serif" font-size="19" font-weight="700">Sales by product</text>
+<text x="674" y="193" fill="#718096" font-family="Arial, sans-serif" font-size="11">BAR LENGTH = REVENUE · UNITS AND SALES SHOWN AT RIGHT</text>
+<text x="674" y="230" fill="#334155" font-family="Arial, sans-serif" font-size="12">Wireless Mouse</text>
+<rect x="820" y="218" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="820" y="218" width="112.0" height="12" rx="6" fill="#3978d4"/>
+<text x="946" y="230" fill="#334155" font-family="Arial, sans-serif" font-size="11">29 units · £724.71 · 4 sales</text>
+<text x="674" y="259" fill="#334155" font-family="Arial, sans-serif" font-size="12">Headset</text>
+<rect x="820" y="247" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="820" y="247" width="111.1" height="12" rx="6" fill="#3978d4"/>
+<text x="946" y="259" fill="#334155" font-family="Arial, sans-serif" font-size="11">18 units · £719.10 · 4 sales</text>
+<text x="674" y="288" fill="#334155" font-family="Arial, sans-serif" font-size="12">Laptop Stand</text>
+<rect x="820" y="276" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="820" y="276" width="90.4" height="12" rx="6" fill="#3978d4"/>
+<text x="946" y="288" fill="#334155" font-family="Arial, sans-serif" font-size="11">18 units · £585.00 · 4 sales</text>
+<text x="674" y="317" fill="#334155" font-family="Arial, sans-serif" font-size="12">Webcam</text>
+<rect x="820" y="305" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="820" y="305" width="92.6" height="12" rx="6" fill="#3978d4"/>
+<text x="946" y="317" fill="#334155" font-family="Arial, sans-serif" font-size="11">11 units · £599.50 · 4 sales</text>
+<text x="674" y="346" fill="#334155" font-family="Arial, sans-serif" font-size="12">USB-C Dock</text>
+<rect x="820" y="334" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="820" y="334" width="96.3" height="12" rx="6" fill="#3978d4"/>
+<text x="946" y="346" fill="#334155" font-family="Arial, sans-serif" font-size="11">7 units · £623.00 · 4 sales</text>
+<rect x="36" y="440" width="592" height="286" rx="14" fill="#ffffff" stroke="#dce4ee"/>
+<text x="58" y="476" fill="#172b4d" font-family="Arial, sans-serif" font-size="19" font-weight="700">Sales by salesperson</text>
+<text x="58" y="501" fill="#718096" font-family="Arial, sans-serif" font-size="11">BAR LENGTH = REVENUE · UNITS AND SALES SHOWN AT RIGHT</text>
+<text x="58" y="538" fill="#334155" font-family="Arial, sans-serif" font-size="12">David Singh</text>
+<rect x="204" y="526" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="526" width="112.0" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="538" fill="#334155" font-family="Arial, sans-serif" font-size="11">21 units · £703.61 · 4 sales</text>
+<text x="58" y="567" fill="#334155" font-family="Arial, sans-serif" font-size="12">Emma Scott</text>
+<rect x="204" y="555" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="555" width="108.1" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="567" fill="#334155" font-family="Arial, sans-serif" font-size="11">20 units · £679.32 · 4 sales</text>
+<text x="58" y="596" fill="#334155" font-family="Arial, sans-serif" font-size="12">Cara Reid</text>
+<rect x="204" y="584" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="584" width="110.5" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="596" fill="#334155" font-family="Arial, sans-serif" font-size="11">14 units · £694.43 · 4 sales</text>
+<text x="58" y="625" fill="#334155" font-family="Arial, sans-serif" font-size="12">Ben Fraser</text>
+<rect x="204" y="613" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="613" width="63.1" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="625" fill="#334155" font-family="Arial, sans-serif" font-size="11">12 units · £396.45 · 3 sales</text>
+<text x="58" y="654" fill="#334155" font-family="Arial, sans-serif" font-size="12">Aisha Khan</text>
+<rect x="204" y="642" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="642" width="92.7" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="654" fill="#334155" font-family="Arial, sans-serif" font-size="11">10 units · £582.50 · 4 sales</text>
+<text x="58" y="683" fill="#334155" font-family="Arial, sans-serif" font-size="12">Unspecified</text>
+<rect x="204" y="671" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="204" y="671" width="31.0" height="12" rx="6" fill="#3978d4"/>
+<text x="330" y="683" fill="#334155" font-family="Arial, sans-serif" font-size="11">6 units · £195.00 · 1 sales</text>
+<rect x="652" y="440" width="592" height="286" rx="14" fill="#ffffff" stroke="#dce4ee"/>
+<text x="674" y="476" fill="#172b4d" font-family="Arial, sans-serif" font-size="19" font-weight="700">Popular categories</text>
+<text x="674" y="501" fill="#718096" font-family="Arial, sans-serif" font-size="11">BAR LENGTH = REVENUE · UNITS AND SALES SHOWN AT RIGHT</text>
+<text x="674" y="538" fill="#334155" font-family="Arial, sans-serif" font-size="12">Accessories</text>
+<rect x="820" y="526" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="820" y="526" width="112.0" height="12" rx="6" fill="#3978d4"/>
+<text x="946" y="538" fill="#334155" font-family="Arial, sans-serif" font-size="11">65 units · £2028.81 · 12 sales</text>
+<text x="674" y="567" fill="#334155" font-family="Arial, sans-serif" font-size="12">Hardware</text>
+<rect x="820" y="555" width="112" height="12" rx="6" fill="#edf2f7"/>
+<rect x="820" y="555" width="67.5" height="12" rx="6" fill="#3978d4"/>
+<text x="946" y="567" fill="#334155" font-family="Arial, sans-serif" font-size="11">18 units · £1222.50 · 8 sales</text>
+</svg>
