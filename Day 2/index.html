@@ -15,6 +15,7 @@
       text-rendering: optimizeLegibility;
       --muted: #a5a9bb;
       --accent: #b8a1ff;
+      --surface: rgba(27, 30, 44, .86);
     }
 
     * { box-sizing: border-box; }
@@ -29,7 +30,7 @@
     }
 
     main {
-      width: min(100% - 40px, 760px);
+      width: min(100% - 40px, 860px);
       margin: 0 auto;
       padding: 76px 0 56px;
     }
@@ -58,11 +59,11 @@
       line-height: 1.65;
     }
 
-    .search-panel {
+    .search-panel, .catalog-panel {
       padding: 24px;
       border: 1px solid rgba(255, 255, 255, .1);
       border-radius: 18px;
-      background: rgba(27, 30, 44, .86);
+      background: var(--surface);
       box-shadow: 0 24px 70px rgba(0, 0, 0, .24);
     }
 
@@ -109,6 +110,14 @@
     button:hover { background: #c9b8ff; transform: translateY(-1px); }
     button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
+    .secondary-button {
+      border: 1px solid #41445a;
+      background: transparent;
+      color: #e6e7ef;
+    }
+
+    .secondary-button:hover { background: rgba(255, 255, 255, .08); }
+
     .result {
       min-height: 26px;
       margin: 18px 0 0;
@@ -128,7 +137,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
 
     h2 {
@@ -139,22 +148,112 @@
 
     .count { color: var(--muted); font-size: .85rem; }
 
+    .catalog-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .catalog-controls label { margin-bottom: 8px; }
+
+    select {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 12px;
+      border: 1px solid #41445a;
+      border-radius: 10px;
+      background: #141723;
+      color: #fff;
+      font: inherit;
+    }
+
+    select:focus-visible { outline: 3px solid rgba(184, 161, 255, .6); outline-offset: 2px; }
+
+    .watchlist-filter {
+      display: flex;
+      min-height: 48px;
+      align-items: center;
+      gap: 9px;
+      margin: 0;
+      color: #e6e7ef;
+      white-space: nowrap;
+    }
+
+    .watchlist-filter input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--accent);
+    }
+
     .show-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 12px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .show-list li {
-      padding: 17px 18px;
+    .show-card {
+      min-width: 0;
+      padding: 18px;
       border: 1px solid rgba(255, 255, 255, .09);
       border-radius: 12px;
       background: rgba(255, 255, 255, .035);
+    }
+
+    .show-card h3 {
+      margin: 0;
+      color: #f4f5fb;
+      font-size: 1.08rem;
+    }
+
+    .show-card p {
+      margin: 9px 0 14px;
+      color: var(--muted);
+      font-size: .91rem;
+      line-height: 1.55;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .genre-tag {
+      color: var(--accent);
+      font-size: .8rem;
+      font-weight: 650;
+    }
+
+    .favorite-button {
+      min-height: 38px;
+      padding: 7px 11px;
+      border: 1px solid #41445a;
+      background: transparent;
       color: #e6e7ef;
-      font-weight: 600;
+      font-size: .82rem;
+    }
+
+    .favorite-button[aria-pressed="true"] {
+      border-color: rgba(184, 161, 255, .65);
+      background: rgba(184, 161, 255, .14);
+      color: #d8cbff;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      margin: 0;
+      padding: 20px;
+      border: 1px dashed #41445a;
+      border-radius: 12px;
+      color: var(--muted);
+      text-align: center;
     }
 
     footer {
@@ -164,10 +263,13 @@
     }
 
     @media (max-width: 520px) {
-      main { width: min(100% - 28px, 760px); padding-top: 52px; }
+      main { width: min(100% - 28px, 860px); padding-top: 52px; }
       .search-panel { padding: 18px; }
       .search-row { flex-direction: column; }
       button { min-height: 48px; }
+      .catalog-panel { padding: 18px; }
+      .catalog-controls { grid-template-columns: 1fr; }
+      .watchlist-filter { min-height: 36px; }
     }
   </style>
 </head>
@@ -175,7 +277,7 @@
   <main>
     <p class="eyebrow">Your next watch starts here</p>
     <h1>ShowFinder</h1>
-    <p class="intro">Looking for a favorite? Search the small collection below and we’ll tell you if it’s here.</p>
+    <p class="intro">Search the collection, browse by genre, and save shows to your personal watchlist.</p>
 
     <section class="search-panel" aria-labelledby="search-label">
       <form id="search-form">
@@ -190,59 +292,237 @@
             aria-describedby="search-result"
           >
           <button type="submit">Search</button>
+          <button class="secondary-button" id="clear-search" type="button">Clear</button>
         </div>
       </form>
-      <p class="result" id="search-result" role="status" aria-live="polite">Enter a show title to check if it’s in the collection.</p>
+      <p class="result" id="search-result" role="status" aria-live="polite" aria-atomic="true">Showing all shows. Enter a title to search.</p>
     </section>
 
     <section class="catalog" aria-labelledby="catalog-title">
-      <div class="catalog-heading">
-        <h2 id="catalog-title">Shows in the collection</h2>
-        <span class="count">3 titles</span>
+      <div class="catalog-panel">
+        <div class="catalog-heading">
+          <h2 id="catalog-title">Shows in the collection</h2>
+          <span class="count" id="show-count"></span>
+        </div>
+        <div class="catalog-controls">
+          <div>
+            <label for="genre-filter">Filter by genre</label>
+            <select id="genre-filter">
+              <option value="all">All genres</option>
+            </select>
+          </div>
+          <div>
+            <label for="sort-order">Sort titles</label>
+            <select id="sort-order">
+              <option value="az">A to Z</option>
+              <option value="za">Z to A</option>
+            </select>
+          </div>
+          <label class="watchlist-filter" for="watchlist-only">
+            <input id="watchlist-only" type="checkbox">
+            Watchlist only
+          </label>
+        </div>
+        <ul class="show-list" id="show-list" aria-live="polite" aria-relevant="additions removals"></ul>
       </div>
-      <ul class="show-list" id="show-list"></ul>
     </section>
 
-    <footer>Search is not case-sensitive and matches part of a title.</footer>
+    <footer>Your watchlist is saved in this browser. Search matches titles and descriptions.</footer>
   </main>
 
   <script>
-    const shows = ["Doctor Who", "Sherlock", "Luther"];
+    const shows = [
+      { title: "Doctor Who", genre: "Science fiction", description: "A time-travelling Doctor explores the universe and its history." },
+      { title: "Sherlock", genre: "Crime", description: "A modern take on the brilliant detective solving mysteries in London." },
+      { title: "Luther", genre: "Crime", description: "Detective John Luther tackles complex cases in a gritty crime drama." },
+      { title: "The Crown", genre: "Drama", description: "A historical drama following the reign of Queen Elizabeth II." },
+      { title: "Planet Earth", genre: "Documentary", description: "A nature documentary showcasing wildlife and landscapes around the world." },
+      { title: "Black Mirror", genre: "Science fiction", description: "An anthology exploring technology and its impact on people." }
+    ];
+    const watchlistStorageKey = "showfinder-watchlist";
     const form = document.querySelector("#search-form");
     const searchInput = document.querySelector("#search-term");
     const result = document.querySelector("#search-result");
+    const clearButton = document.querySelector("#clear-search");
     const showList = document.querySelector("#show-list");
+    const showCount = document.querySelector("#show-count");
+    const genreFilter = document.querySelector("#genre-filter");
+    const sortOrder = document.querySelector("#sort-order");
+    const watchlistOnly = document.querySelector("#watchlist-only");
+    let favorites = loadWatchlist();
 
-    for (const show of shows) {
-      const item = document.createElement("li");
-      item.textContent = show;
-      showList.append(item);
+    function loadWatchlist() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(watchlistStorageKey) || "[]");
+        return new Set(Array.isArray(saved) ? saved.filter((title) =>
+          shows.some((show) => show.title === title)
+        ) : []);
+      } catch (error) {
+        console.error("Could not load the saved watchlist.", error);
+        result.textContent = "Your saved watchlist could not be loaded in this browser.";
+        result.classList.add("error");
+        return new Set();
+      }
+    }
+
+    function saveWatchlist() {
+      try {
+        localStorage.setItem(watchlistStorageKey, JSON.stringify([...favorites]));
+        return true;
+      } catch (error) {
+        console.error("Could not save the watchlist.", error);
+        result.textContent = "Could not save your watchlist. Check your browser storage settings.";
+        result.className = "result error";
+        return false;
+      }
+    }
+
+    function updateResult(message, state = "") {
+      result.textContent = message;
+      result.className = state ? `result ${state}` : "result";
+    }
+
+    function getVisibleShows() {
+      const query = searchInput.value.trim().toLocaleLowerCase();
+      const selectedGenre = genreFilter.value;
+      const direction = sortOrder.value === "az" ? 1 : -1;
+      return shows
+        .filter((show) =>
+          (!query || `${show.title} ${show.description}`.toLocaleLowerCase().includes(query)) &&
+          (selectedGenre === "all" || show.genre === selectedGenre) &&
+          (!watchlistOnly.checked || favorites.has(show.title))
+        )
+        .sort((first, second) => first.title.localeCompare(second.title) * direction);
+    }
+
+    function createShowCard(show) {
+      const card = document.createElement("li");
+      card.className = "show-card";
+
+      const title = document.createElement("h3");
+      title.textContent = show.title;
+      const description = document.createElement("p");
+      description.textContent = show.description;
+      const metadata = document.createElement("div");
+      metadata.className = "card-meta";
+      const genre = document.createElement("span");
+      genre.className = "genre-tag";
+      genre.textContent = show.genre;
+      const isFavorite = favorites.has(show.title);
+      const favoriteButton = document.createElement("button");
+      favoriteButton.className = "favorite-button";
+      favoriteButton.type = "button";
+      favoriteButton.setAttribute("aria-pressed", String(isFavorite));
+      favoriteButton.setAttribute(
+        "aria-label",
+        `${isFavorite ? "Remove" : "Add"} ${show.title} ${isFavorite ? "from" : "to"} watchlist`
+      );
+      favoriteButton.textContent = isFavorite ? "♥ Saved" : "♡ Add to watchlist";
+      favoriteButton.addEventListener("click", () => toggleFavorite(show));
+
+      metadata.append(genre, favoriteButton);
+      card.append(title, description, metadata);
+      return card;
+    }
+
+    function renderShows() {
+      const visibleShows = getVisibleShows();
+      showCount.textContent = `${visibleShows.length} ${visibleShows.length === 1 ? "title" : "titles"}`;
+      showList.replaceChildren();
+
+      if (visibleShows.length === 0) {
+        const emptyState = document.createElement("li");
+        emptyState.className = "empty-state";
+        emptyState.textContent = "No shows match these filters.";
+        showList.append(emptyState);
+        return;
+      }
+
+      showList.append(...visibleShows.map(createShowCard));
+    }
+
+    function toggleFavorite(show) {
+      const wasSaved = favorites.has(show.title);
+      if (wasSaved) favorites.delete(show.title);
+      else favorites.add(show.title);
+
+      if (!saveWatchlist()) {
+        if (wasSaved) favorites.add(show.title);
+        else favorites.delete(show.title);
+        return;
+      }
+
+      updateResult(`${show.title} ${wasSaved ? "removed from" : "added to"} your watchlist.`, "success");
+      renderShows();
+    }
+
+    function updateSearchFeedback() {
+      const searchTerm = searchInput.value.trim();
+      if (!searchTerm) {
+        updateResult("Showing all shows. Enter a title to search.");
+        return;
+      }
+
+      const matches = getVisibleShows();
+      if (matches.length) {
+        updateResult(
+          `Found ${matches.length} matching ${matches.length === 1 ? "show" : "shows"}: ${matches.map((show) => show.title).join(", ")}.`,
+          "success"
+        );
+      } else {
+        updateResult(`No shows found for “${searchTerm}” with the selected filters.`, "failure");
+      }
+    }
+
+    for (const genre of [...new Set(shows.map((show) => show.genre))].sort()) {
+      const option = document.createElement("option");
+      option.value = genre;
+      option.textContent = genre;
+      genreFilter.append(option);
     }
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      const searchTerm = searchInput.value.trim();
-      result.className = "result";
-
-      if (!searchTerm) {
-        result.textContent = "Please enter a show title to search.";
-        result.classList.add("error");
+      if (!searchInput.value.trim()) {
+        updateResult("Please enter a title or description to search.", "error");
         searchInput.focus();
         return;
       }
-
-      const match = shows.find((show) =>
-        show.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
-      );
-
-      if (match) {
-        result.textContent = `Found: ${match}`;
-        result.classList.add("success");
-      } else {
-        result.textContent = `Not found: ${searchTerm}`;
-        result.classList.add("failure");
-      }
+      updateSearchFeedback();
+      renderShows();
     });
+
+    function clearSearch() {
+      searchInput.value = "";
+      genreFilter.value = "all";
+      sortOrder.value = "az";
+      watchlistOnly.checked = false;
+      updateResult("Showing all shows. Enter a title to search.");
+      renderShows();
+      searchInput.focus();
+    }
+
+    clearButton.addEventListener("click", clearSearch);
+
+    searchInput.addEventListener("input", () => {
+      if (!searchInput.value.trim()) {
+        updateResult("Showing all shows. Enter a title to search.");
+      } else {
+        updateSearchFeedback();
+      }
+      renderShows();
+    });
+    genreFilter.addEventListener("change", () => {
+      updateSearchFeedback();
+      renderShows();
+    });
+    sortOrder.addEventListener("change", renderShows);
+    watchlistOnly.addEventListener("change", () => {
+      updateSearchFeedback();
+      renderShows();
+    });
+
+    renderShows();
   </script>
 </body>
 </html>
