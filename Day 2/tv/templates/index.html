@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TV Show Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero__content">
+          <p class="eyebrow">Discover your next binge</p>
+          <h1>Search TV shows</h1>
+          <form method="post" class="search-form">
+            <label class="sr-only" for="query">Search for a show</label>
+            <input
+              id="query"
+              name="query"
+              type="text"
+              value="{{ query }}"
+              placeholder="Search by title..."
+              autocomplete="off"
+            />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      </header>
+
+      <main class="results-panel">
+        {% if error_message %}
+          <div class="status-message error">
+            {{ error_message }}
+          </div>
+        {% elif query %}
+          <div class="results-header">
+            <h2>Results for "{{ query }}"</h2>
+          </div>
+        {% endif %}
+
+        {% if results %}
+          <section class="results-grid" aria-live="polite">
+            {% for show in results %}
+              <article class="show-card">
+                {% if show.image %}
+                  <img src="{{ show.image }}" alt="{{ show.name }} poster" />
+                {% else %}
+                  <div class="placeholder-art">No image</div>
+                {% endif %}
+
+                <div class="show-card__content">
+                  <div class="title-row">
+                    <h3>{{ show.name }}</h3>
+                    <span class="status-badge">{{ show.status }}</span>
+                  </div>
+
+                  <p class="meta">Premiered: {{ show.premiered }}</p>
+
+                  <div class="genre-list">
+                    {% for genre in show.genres %}
+                      <span>{{ genre }}</span>
+                    {% endfor %}
+                  </div>
+
+                  <p class="summary">{{ show.summary|striptags }}</p>
+
+                  {% if show.official_site != '#' %}
+                    <a href="{{ show.official_site }}" target="_blank" rel="noreferrer">Official site</a>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </section>
+        {% elif query and not error_message %}
+          <div class="status-message empty">
+            No shows found for that search.
+          </div>
+        {% endif %}
+      </main>
+    </div>
+  </body>
+</html>
+

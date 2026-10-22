@@ -11,8 +11,11 @@ Open `index.html` in a modern web browser. No installation, server, or internet 
 - Search show titles and descriptions; matching is case-insensitive.
 - Filter by genre and sort titles A–Z or Z–A.
 - Save shows to a watchlist, stored in the browser's local storage and shown in a live summary.
+- Prepare an email containing your saved watchlist, your reply address, and an optional note.
 - Show search results and an empty state when nothing matches.
 - Use the Clear button to reset the search and filters.
+
+The contact form opens the visitor's configured email app addressed to `richard.gillett@panthera-bio.com`. Save at least one title and provide your email address; the saved titles and optional note are added to the draft. Review and send the email from your email app. The page does not send or store contact submissions itself.
 
 ## Update the collection
 

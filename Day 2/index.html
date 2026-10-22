@@ -128,6 +128,54 @@
     .result.success { color: #9de4bd; }
     .result.failure, .result.error { color: #ffaaa8; }
 
+    .contact-panel {
+      margin-top: 22px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    .contact-panel h2 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .contact-panel > p {
+      margin: 9px 0 18px;
+      color: var(--muted);
+      font-size: .91rem;
+      line-height: 1.5;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-form label { margin: 0 0 7px; }
+
+    .contact-form textarea {
+      width: 100%;
+      min-height: 100px;
+      resize: vertical;
+      padding: 14px 16px;
+      border: 1px solid #41445a;
+      border-radius: 10px;
+      outline: none;
+      background: #141723;
+      color: #fff;
+      font: inherit;
+    }
+
+    .contact-form textarea:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(184, 161, 255, .2);
+    }
+
+    .contact-form button { min-height: 48px; }
+    .contact-note { margin: 0; color: var(--muted); font-size: .8rem; }
+
     .watchlist-summary {
       margin-top: 22px;
       padding: 20px 22px;
@@ -316,6 +364,7 @@
       .search-panel { padding: 18px; }
       .search-row { flex-direction: column; }
       button { min-height: 48px; }
+      .contact-panel { padding: 18px; }
       .catalog-panel { padding: 18px; }
       .catalog-controls { grid-template-columns: 1fr; }
       .watchlist-filter { min-height: 36px; }
@@ -354,6 +403,23 @@
       </div>
       <ul class="watchlist-summary-list" id="watchlist-summary-list" aria-live="polite"></ul>
       <p class="watchlist-summary-empty" id="watchlist-summary-empty" hidden>No shows saved yet. Add one from the collection below.</p>
+    </section>
+
+    <section class="contact-panel" aria-labelledby="contact-title">
+      <h2 id="contact-title">Get in touch</h2>
+      <p>Add your email and an optional note. Your saved watchlist will be included in the email.</p>
+      <form class="contact-form" id="contact-form">
+        <div>
+          <label for="contact-email">Your email address</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <div>
+          <label for="contact-message">Optional note</label>
+          <textarea id="contact-message" name="message" placeholder="Add a note (optional)"></textarea>
+        </div>
+        <button type="submit">Email my watchlist</button>
+        <p class="contact-note" id="contact-note" role="status" aria-live="polite">Save at least one show to your watchlist. Your email app will open so you can review and send it.</p>
+      </form>
     </section>
 
     <section class="catalog" aria-labelledby="catalog-title">
@@ -400,6 +466,10 @@
     // Store favorites locally so the watchlist persists between visits on this browser.
     const watchlistStorageKey = "showfinder-watchlist";
     const form = document.querySelector("#search-form");
+    const contactForm = document.querySelector("#contact-form");
+    const contactEmail = document.querySelector("#contact-email");
+    const contactMessage = document.querySelector("#contact-message");
+    const contactNote = document.querySelector("#contact-note");
     const searchInput = document.querySelector("#search-term");
     const result = document.querySelector("#search-result");
     const clearButton = document.querySelector("#clear-search");
@@ -412,6 +482,26 @@
     const sortOrder = document.querySelector("#sort-order");
     const watchlistOnly = document.querySelector("#watchlist-only");
     let favorites = loadWatchlist();
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!contactForm.reportValidity()) return;
+
+      const savedShows = [...favorites].sort((first, second) => first.localeCompare(second));
+      if (savedShows.length === 0) {
+        contactNote.textContent = "Save at least one show to your watchlist before preparing the email.";
+        return;
+      }
+
+      const recipient = "richard.gillett@panthera-bio.com";
+      const subject = encodeURIComponent("My ShowFinder watchlist");
+      const body = encodeURIComponent(
+        `From: ${contactEmail.value.trim()}\n\nMy watchlist:\n${savedShows.map((title) => `- ${title}`).join("\n")}\n\n${contactMessage.value.trim()}`
+      );
+      // mailto opens the visitor's configured email app; the visitor sends the message there.
+      contactNote.textContent = "Opening your email app. Review the watchlist and press Send to deliver it.";
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    });
 
     function loadWatchlist() {
       try {
