@@ -5,6 +5,7 @@ TV_SHOWS = ("Doctor Who", "Sherlock", "Luther")
 
 def search_shows(search_term: str, shows: tuple[str, ...]) -> bool:
     """Return whether any show title contains the search term, ignoring case."""
+    # casefold() handles more international letter case variants than lower().
     normalized_term = search_term.strip().casefold()
     return bool(normalized_term) and any(
         normalized_term in show_title.casefold() for show_title in shows

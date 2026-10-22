@@ -128,6 +128,55 @@
     .result.success { color: #9de4bd; }
     .result.failure, .result.error { color: #ffaaa8; }
 
+    .watchlist-summary {
+      margin-top: 22px;
+      padding: 20px 22px;
+      border: 1px solid rgba(184, 161, 255, .22);
+      border-radius: 14px;
+      background: rgba(184, 161, 255, .07);
+    }
+
+    .watchlist-summary-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .watchlist-summary h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .watchlist-summary-count {
+      color: var(--accent);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+
+    .watchlist-summary-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .watchlist-summary-list li {
+      padding: 7px 11px;
+      border: 1px solid rgba(184, 161, 255, .2);
+      border-radius: 999px;
+      color: #e6e0ff;
+      font-size: .85rem;
+    }
+
+    .watchlist-summary-empty {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
     .catalog {
       margin-top: 38px;
     }
@@ -298,6 +347,15 @@
       <p class="result" id="search-result" role="status" aria-live="polite" aria-atomic="true">Showing all shows. Enter a title to search.</p>
     </section>
 
+    <section class="watchlist-summary" aria-labelledby="watchlist-summary-title">
+      <div class="watchlist-summary-heading">
+        <h2 id="watchlist-summary-title">Your watchlist</h2>
+        <span class="watchlist-summary-count" id="watchlist-summary-count" aria-live="polite" aria-atomic="true"></span>
+      </div>
+      <ul class="watchlist-summary-list" id="watchlist-summary-list" aria-live="polite"></ul>
+      <p class="watchlist-summary-empty" id="watchlist-summary-empty" hidden>No shows saved yet. Add one from the collection below.</p>
+    </section>
+
     <section class="catalog" aria-labelledby="catalog-title">
       <div class="catalog-panel">
         <div class="catalog-heading">
@@ -339,12 +397,16 @@
       { title: "Planet Earth", genre: "Documentary", description: "A nature documentary showcasing wildlife and landscapes around the world." },
       { title: "Black Mirror", genre: "Science fiction", description: "An anthology exploring technology and its impact on people." }
     ];
+    // Store favorites locally so the watchlist persists between visits on this browser.
     const watchlistStorageKey = "showfinder-watchlist";
     const form = document.querySelector("#search-form");
     const searchInput = document.querySelector("#search-term");
     const result = document.querySelector("#search-result");
     const clearButton = document.querySelector("#clear-search");
     const showList = document.querySelector("#show-list");
+    const watchlistSummaryCount = document.querySelector("#watchlist-summary-count");
+    const watchlistSummaryList = document.querySelector("#watchlist-summary-list");
+    const watchlistSummaryEmpty = document.querySelector("#watchlist-summary-empty");
     const showCount = document.querySelector("#show-count");
     const genreFilter = document.querySelector("#genre-filter");
     const sortOrder = document.querySelector("#sort-order");
@@ -429,6 +491,7 @@
       const visibleShows = getVisibleShows();
       showCount.textContent = `${visibleShows.length} ${visibleShows.length === 1 ? "title" : "titles"}`;
       showList.replaceChildren();
+      renderWatchlistSummary();
 
       if (visibleShows.length === 0) {
         const emptyState = document.createElement("li");
@@ -439,6 +502,20 @@
       }
 
       showList.append(...visibleShows.map(createShowCard));
+    }
+
+    function renderWatchlistSummary() {
+      const savedTitles = [...favorites].sort((first, second) => first.localeCompare(second));
+      watchlistSummaryCount.textContent =
+        `${savedTitles.length} ${savedTitles.length === 1 ? "title" : "titles"} saved`;
+      watchlistSummaryList.replaceChildren();
+      watchlistSummaryEmpty.hidden = savedTitles.length > 0;
+
+      for (const title of savedTitles) {
+        const item = document.createElement("li");
+        item.textContent = title;
+        watchlistSummaryList.append(item);
+      }
     }
 
     function toggleFavorite(show) {
