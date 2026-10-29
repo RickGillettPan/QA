@@ -1,0 +1,19 @@
+Example command:
+    python tvmaze_api.py
+
+Sample output for the current config.json (including the Comedy genre filter):
+
+No shows found for 'comedy' with a rating of at least 4.
+
+If TVMaze returns matching shows, each is printed in this format:
+
+Name: Show title
+Genres: Comedy
+Rating: 8.2/10
+
+JSON structure explanation:
+The search endpoint returns a JSON array. Each array item contains a
+"score" field and a "show" object. The show object has fields including
+"name", "genres" (a list of genre strings), and "rating". The rating
+object's "average" field is a number or null. The script maps those values
+into TVShow Python dataclass objects before displaying them.

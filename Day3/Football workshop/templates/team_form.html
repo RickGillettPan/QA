@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- Team form: selected club's season totals, recent outcomes, and match details. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071311" />
+    <title>Team form — Touchline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="{{ url_for('static', filename='favorites.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='dashboard.js') }}" defer></script>
+  </head>
+  <body data-current-league="{{ config.league if config else '' }}">
+    <div class="pitch-glow pitch-glow--left" aria-hidden="true"></div>
+    <div class="pitch-glow pitch-glow--right" aria-hidden="true"></div>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="{{ url_for('index') }}"><span class="brand-icon">T</span><span>touchline<span class="brand-period">.</span></span></a>
+        <div class="side-section">
+          <p class="side-label">WORKSPACE</p>
+          <a class="side-link" href="{{ url_for('index') }}"><span class="side-icon">▦</span> Match centre</a>
+          <a class="side-link" href="{{ url_for('results') }}"><span class="side-icon">◷</span> Results</a>
+          <a class="side-link" href="{{ url_for('league_table') }}"><span class="side-icon">▤</span> League table</a>
+          <a class="side-link side-link--active" href="{{ url_for('team_form') }}" aria-current="page"><span class="side-icon">⌁</span> Team form</a>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="favorite-display"><span class="favorite-star">★</span><div><small>YOUR FAVOURITE</small><strong data-favorite-display>No team selected</strong><span data-favorite-league></span></div></div>
+          <div class="connection-card"><span class="connection-dot"></span><div><strong>ESPN connection</strong><small>Scoreboard service</small></div><span class="connection-state">ON</span></div>
+          <p class="sidebar-foot">FOOTBALL MONITOR <span>v1.0</span></p>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar"><div class="breadcrumb"><span>Workspace</span><b>/</b> Team form</div><div class="topbar-right"><span class="updated-label"><span class="live-pulse"></span> SEASON TO DATE</span><span class="top-date" id="today-label">Today</span><span class="avatar">FM</span></div></header>
+        <section class="page-heading">
+          <div><p class="overline">THE STORY BEHIND THE SCORE</p><h1>Team form<span class="heading-dot">.</span></h1><p class="heading-subtitle">Track recent results and momentum across the season</p></div>
+        </section>
+
+        {% if error_message %}<section class="error-banner" role="alert"><span class="error-icon">!</span><div><strong>Team form unavailable</strong><p>{{ error_message }}</p></div><a class="button button--quiet" href="{{ url_for('team_form') }}">Try again</a></section>{% endif %}
+
+        <section class="content-panel team-form-panel">
+          <div class="panel-heading">
+            <div><p class="overline">CHOOSE YOUR VIEW</p><h2>Explore a club</h2></div>
+            <form class="filter-form form-selectors" method="get" action="{{ url_for('team_form') }}" data-team-form data-league="{{ config.league if config else '' }}">
+              <label><span class="sr-only">Select league</span><select name="league" aria-label="Select league">{% for key, league in leagues.items() %}<option value="{{ key }}" {% if config and config.league == key %}selected{% endif %}>{{ league[1] }}</option>{% endfor %}</select></label>
+              <label><span class="sr-only">Select team</span><select name="team" aria-label="Select team" required {% if not team_names %}disabled{% endif %}>
+                <option value="">Choose a team</option>
+                {% for team in team_names %}<option value="{{ team }}" {% if selected_team == team %}selected{% endif %}>{{ team }}</option>{% endfor %}
+              </select></label>
+              <button class="button button--primary" type="submit">Show form</button>
+            </form>
+          </div>
+        </section>
+
+        {% if selected_team %}
+          <section class="team-hero">
+            <div class="team-identity">
+              <span class="team-crest team-crest--large">{{ selected_team[:2]|upper }}</span>
+              <div><p class="overline">{{ config.league_name }}</p><h2>{{ selected_team }}</h2><p>Season form · Latest five completed matches</p></div>
+            </div>
+            {% if recent_matches %}
+              <div class="form-summary">
+                <span>LAST 5</span>
+                <div class="form-chips" aria-label="Recent form from oldest to newest">
+                  {% for match in recent_matches|reverse %}
+                    <span class="form-chip form-chip--{{ match.result|lower }}" title="{{ match.result }} vs {{ match.opponent }} ({{ match.team_score }}–{{ match.opponent_score }})">{{ match.result }}</span>
+                  {% endfor %}
+                </div>
+                <small>Oldest <span>→</span> Latest</small>
+              </div>
+            {% endif %}
+          </section>
+
+          <section class="form-stats" aria-label="Season team statistics">
+            <article class="form-stat"><span class="form-stat-icon">◎</span><small>PLAYED</small><strong>{{ stats.played }}</strong><span>completed matches</span></article>
+            <article class="form-stat form-stat--win"><span class="form-stat-icon">↗</span><small>WINS</small><strong>{{ stats.won }}</strong><span>three points each</span></article>
+            <article class="form-stat form-stat--draw"><span class="form-stat-icon">↔</span><small>DRAWS</small><strong>{{ stats.drawn }}</strong><span>one point each</span></article>
+            <article class="form-stat form-stat--loss"><span class="form-stat-icon">↘</span><small>LOSSES</small><strong>{{ stats.lost }}</strong><span>this season</span></article>
+            <article class="form-stat form-stat--points"><span class="form-stat-icon">★</span><small>POINTS</small><strong>{{ stats.points }}</strong><span>from completed games</span></article>
+          </section>
+
+          <section class="content-panel">
+            <div class="panel-heading"><div><p class="overline">RECENT MOMENTUM</p><h2>Last five results</h2></div><span class="form-legend"><i></i> Win <i></i> Draw <i></i> Loss</span></div>
+            {% if recent_matches %}
+              <div class="form-graph" aria-label="Last five match outcomes">
+                {% for match in recent_matches|reverse %}
+                  {% set bar_height = 78 if match.result == "W" else 54 if match.result == "D" else 30 %}
+                  <article class="form-graph-item">
+                    <div class="graph-value graph-value--{{ match.result|lower }}">{{ match.points }} pt{{ "s" if match.points != 1 else "" }}</div>
+                    <div class="graph-track"><div class="graph-bar graph-bar--{{ match.result|lower }}" style="height: {{ bar_height }}px"><span>{{ match.result }}</span></div></div>
+                    <strong>{{ match.opponent }}</strong>
+                    <span>{{ match.venue_role }} · {{ match.team_score }}–{{ match.opponent_score }}</span>
+                    <time class="local-time" datetime="{{ match.match_date }}">{{ match.match_date[:10] }}</time>
+                  </article>
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="empty-state"><span aria-hidden="true">◌</span><h3>No completed results yet</h3><p>Results will appear here once this team has played this season.</p></div>
+            {% endif %}
+          </section>
+
+          <section class="content-panel recent-list-panel">
+            <div class="panel-heading"><div><p class="overline">MATCH-BY-MATCH</p><h2>Recent results</h2></div><a class="button button--quiet" href="{{ url_for('results', league=config.league, team=selected_team) }}">All results ↗</a></div>
+            <div class="results-list">
+              {% for match in recent_matches %}
+                <article class="result-row">
+                  <div class="result-date"><time class="local-time" datetime="{{ match.match_date }}">{{ match.match_date }}</time><span>{{ match.venue_role }} · {{ match.league }}</span></div>
+                  <div class="result-match">
+                    <div class="result-team"><span class="club-mark">{{ match.home_team[:2]|upper }}</span><strong>{{ match.home_team }}</strong><b>{{ match.home_score }}</b></div>
+                    <div class="result-team"><span class="club-mark club-mark--away">{{ match.away_team[:2]|upper }}</span><strong>{{ match.away_team }}</strong><b>{{ match.away_score }}</b></div>
+                  </div>
+                  <div class="result-state"><span class="status-pill status-pill--{{ match.result|lower }}">{{ "WIN" if match.result == "W" else "DRAW" if match.result == "D" else "LOSS" }}</span><small>{{ match.points }} point{{ "s" if match.points != 1 else "" }}</small></div>
+                </article>
+              {% else %}
+                <div class="empty-state"><span aria-hidden="true">◌</span><h3>No matches yet</h3><p>Try another team or check back after the next fixture.</p></div>
+              {% endfor %}
+            </div>
+            <div class="panel-footer"><span><i class="source-dot"></i> Season results supplied by ESPN</span><span>Latest five completed matches</span></div>
+          </section>
+        {% else %}
+          <section class="form-welcome">
+            <div class="welcome-pitch" aria-hidden="true"><span>W</span><span>D</span><span>L</span><span>W</span><span>?</span></div>
+            <p class="overline">MAKE IT PERSONAL</p><h2>Pick a team to see their story.</h2><p>Choose a league and club above to explore recent results, points, and form at a glance.</p>
+            <a class="button button--quiet" href="{{ url_for('league_table', league=config.league if config else '') }}">Browse league table ↗</a>
+          </section>
+        {% endif %}
+        <footer class="page-footer">TOUCHLINE <span>·</span> MATCHDAY, MADE CLEAR.</footer>
+      </main>
+    </div>
+  </body>
+</html>

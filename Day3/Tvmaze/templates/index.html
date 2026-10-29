@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111522" />
+    <title>Screenly — TV show discovery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </head>
+  <body>
+    <div class="ambient ambient--one" aria-hidden="true"></div>
+    <div class="ambient ambient--two" aria-hidden="true"></div>
+    <main class="page-shell">
+      <nav class="topbar" aria-label="Main">
+        <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">S</span> screenly</a>
+        <span class="api-label"><span class="live-dot"></span> LIVE FROM TVMAZE</span>
+      </nav>
+
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">A better night starts here</p>
+          <h1>Find the show<br />you’ll <span>love next.</span></h1>
+          <p class="intro">Explore TV favorites, discover something new, and find your next great watch.</p>
+        </div>
+
+        <div class="search-panel">
+          <form class="search-form" method="post" role="search">
+            <label class="sr-only" for="query">Search TV shows</label>
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input
+              id="query"
+              name="query"
+              type="search"
+              value="{{ query }}"
+              placeholder="Search a show, e.g. The Office"
+              autocomplete="off"
+              required
+            />
+            <button type="submit"><span>Search</span><span aria-hidden="true">↗</span></button>
+          </form>
+          <div class="quick-searches" aria-label="Popular searches">
+            <span>Try</span>
+            {% for suggestion in ["The Bear", "Friends", "Severance", "The Office"] %}
+              <button type="button" class="suggestion" data-query="{{ suggestion }}">{{ suggestion }}</button>
+            {% endfor %}
+          </div>
+        </div>
+      </header>
+
+      {% if error_message %}
+        <div class="notice notice--error" role="alert">{{ error_message }}</div>
+      {% elif searched and not shows %}
+        <div class="notice notice--empty">
+          <span class="notice-icon" aria-hidden="true">⌕</span>
+          <div>
+            <h2>No matches this time</h2>
+            <p>Try another title or lower the minimum rating to see more results.</p>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if shows %}
+        <section class="library" aria-label="TV show search results">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Your search</p>
+              <h2>Results for <span>“{{ query }}”</span></h2>
+            </div>
+            <div class="result-total"><strong id="visible-count">{{ shows|length }}</strong><span> titles</span></div>
+          </div>
+
+          <form class="filter-bar" method="post" aria-label="Search options">
+            <input type="hidden" name="query" value="{{ query }}" />
+            <label class="filter-control">
+              <span>Minimum rating</span>
+              <select name="minimum_rating" aria-label="Minimum rating" onchange="this.form.submit()">
+                {% for option in rating_options %}
+                  <option value="{{ option }}" {% if option == minimum_rating %}selected{% endif %}>
+                    {{ "Any rating" if option == 0 else "%.1f+"|format(option) }}
+                  </option>
+                {% endfor %}
+              </select>
+            </label>
+            <label class="unrated-control">
+              <input type="checkbox" name="include_unrated" {% if include_unrated %}checked{% endif %} onchange="this.form.submit()" />
+              <span class="checkmark" aria-hidden="true"></span>
+              Include unrated
+            </label>
+          </form>
+
+          <div class="toolbar">
+            <label class="toolbar-control">
+              <span class="sr-only">Filter by genre</span>
+              <select id="genre-filter" aria-label="Filter by genre">
+                <option value="">All genres</option>
+              </select>
+            </label>
+            <label class="toolbar-control">
+              <span class="sr-only">Sort results</span>
+              <select id="sort-order" aria-label="Sort results">
+                <option value="relevance">Sort: Relevance</option>
+                <option value="rating">Sort: Highest rated</option>
+                <option value="name">Sort: A to Z</option>
+              </select>
+            </label>
+            <button id="favorites-filter" class="favorites-filter" type="button" aria-pressed="false">
+              <span aria-hidden="true">♥</span> Favorites <span id="favorites-count">0</span>
+            </button>
+            <p id="filter-status" class="filter-status" aria-live="polite"></p>
+          </div>
+
+          <div id="show-grid" class="show-grid">
+            {% for show in shows %}
+              <article
+                class="show-card"
+                data-name="{{ show.name|lower }}"
+                data-genres="{{ show.genres|tojson|forceescape }}"
+                data-rating="{{ show.rating if show.rating is not none else -1 }}"
+              >
+                <div class="poster-wrap">
+                  {% if show.image_url %}
+                    <img class="poster" src="{{ show.image_url }}" alt="{{ show.name }} poster" loading="lazy" />
+                  {% else %}
+                    <div class="poster poster--missing" aria-label="No poster available"><span>{{ show.name[:1] }}</span></div>
+                  {% endif %}
+                  {% if show.rating is not none %}
+                    <span class="rating-badge"><span aria-hidden="true">★</span> {{ "%.1f"|format(show.rating) }}</span>
+                  {% else %}
+                    <span class="rating-badge rating-badge--empty">Unrated</span>
+                  {% endif %}
+                  <button class="favorite-button" type="button" aria-label="Add {{ show.name }} to favorites" aria-pressed="false">
+                    <span aria-hidden="true">♡</span>
+                  </button>
+                </div>
+                <div class="show-info">
+                  <div class="show-title-row">
+                    <h3>{{ show.name }}</h3>
+                    {% if show.status %}
+                      <span class="status-dot" title="{{ show.status }}" aria-label="Status: {{ show.status }}"></span>
+                    {% endif %}
+                  </div>
+                  <p class="show-meta">
+                    {% if show.premiered %}<span>{{ show.premiered[:4] }}</span>{% endif %}
+                    {% if show.status %}<span>{{ show.status }}</span>{% endif %}
+                  </p>
+                  {% if show.genres %}
+                    <ul class="genres">
+                      {% for genre in show.genres %}
+                        <li>{{ genre }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    <p class="no-genres">Genres not listed</p>
+                  {% endif %}
+                  {% if show.summary %}
+                    <details class="show-details">
+                      <summary>About this show <span aria-hidden="true">＋</span></summary>
+                      <p>{{ show.summary }}</p>
+                    </details>
+                  {% endif %}
+                  {% if show.official_url and show.official_url.startswith("https://") %}
+                    <a class="official-link" href="{{ show.official_url }}" target="_blank" rel="noopener noreferrer">Official site <span aria-hidden="true">↗</span></a>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+          <div id="no-filter-results" class="notice notice--empty" hidden>
+            <div><h2>No titles match these filters</h2><p>Try another genre or turn off favorites-only mode.</p></div>
+          </div>
+        </section>
+      {% elif not searched %}
+        <section class="discovery" aria-label="How to get started">
+          <div class="discovery-card">
+            <span class="discovery-number">01</span>
+            <span class="discovery-symbol" aria-hidden="true">⌕</span>
+            <h2>Search anything</h2>
+            <p>Find shows by title with live TVMaze data.</p>
+          </div>
+          <div class="discovery-card">
+            <span class="discovery-number">02</span>
+            <span class="discovery-symbol" aria-hidden="true">✦</span>
+            <h2>Find your vibe</h2>
+            <p>Filter by genre, sort by rating, and save favorites.</p>
+          </div>
+          <div class="discovery-card">
+            <span class="discovery-number">03</span>
+            <span class="discovery-symbol" aria-hidden="true">▶</span>
+            <h2>Pick your next</h2>
+            <p>Browse posters and show details before you dive in.</p>
+          </div>
+        </section>
+      {% endif %}
+
+      <footer>
+        <span>Made for your next great watch.</span>
+        <span>Show information provided by <a href="https://www.tvmaze.com/" target="_blank" rel="noopener noreferrer">TVMaze</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>

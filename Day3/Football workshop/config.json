@@ -1,0 +1,6 @@
+{
+  "league": "premier_league",
+  "team_filter": "",
+  "output_file": "match_report.csv",
+  "request_timeout_seconds": 20
+}

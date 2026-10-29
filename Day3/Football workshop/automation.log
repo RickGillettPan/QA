@@ -1,0 +1,428 @@
+2026-10-28 13:28:02 INFO football_monitor: Starting monitor: league=English Premier League team_filter='' output=C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\match_report.csv
+2026-10-28 13:28:05 INFO football_monitor: Monitor completed: fetched=8 matched=8 report=C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\match_report.csv
+2026-10-28 13:28:19 INFO football_monitor: Starting monitor: league=English Premier League team_filter='' output=C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\match_report.csv
+2026-10-28 13:28:19 ERROR football_monitor: Football monitor failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\football_monitor.py", line 224, in run
+    events = fetch_scoreboard(config)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1167, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1171, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1226, in _execute_mock_call
+    raise effect
+TimeoutError: simulated timeout for error logging verification
+2026-10-28 13:36:39 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=2 matched=2
+2026-10-28 13:36:39 INFO football_monitor: Dashboard refreshed: league=German Bundesliga team_filter='chelsea' fetched=2 matched=1
+2026-10-28 13:36:39 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=2 matched=2
+2026-10-28 13:36:54 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=2 matched=2
+2026-10-28 13:36:54 INFO football_monitor: Dashboard refreshed: league=German Bundesliga team_filter='chelsea' fetched=2 matched=1
+2026-10-28 13:36:54 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=2 matched=2
+2026-10-28 13:37:07 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 13:50:02 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 13:50:17 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 13:51:04 INFO football_monitor: Dashboard refreshed: league=German Bundesliga team_filter='' fetched=1 matched=1
+2026-10-28 13:51:15 INFO football_monitor: Dashboard refreshed: league=French Ligue 1 team_filter='' fetched=3 matched=3
+2026-10-28 13:51:25 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 13:51:38 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='brentford' fetched=8 matched=1
+2026-10-28 13:51:51 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 13:51:57 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:06:14 ERROR football_monitor: Dashboard request failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 123, in league_table
+    config = get_selected_league()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1167, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1171, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1226, in _execute_mock_call
+    raise effect
+ValueError: Select a supported league.
+2026-10-28 14:06:14 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:06:14 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:06:51 ERROR football_monitor: Dashboard request failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 123, in league_table
+    config = get_selected_league()
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 55, in get_selected_league
+    raise ValueError("Select a supported league.")
+ValueError: Select a supported league.
+2026-10-28 14:06:51 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:06:51 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:06:54 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:06:55 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:06:56 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:07:38 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:07:38 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:08:06 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:08:06 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:08:06 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:08:29 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:08:29 INFO football_monitor: League table calculated: league=German Bundesliga teams=18
+2026-10-28 14:08:30 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:08:30 INFO football_monitor: Results page loaded: league=Scottish Premiership matches=59 team_filter=''
+2026-10-28 14:09:26 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:09:52 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:09:56 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:10:16 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:10:24 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:10:31 INFO football_monitor: Dashboard refreshed: league=French Ligue 1 team_filter='' fetched=3 matched=3
+2026-10-28 14:10:55 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:11:04 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:11:14 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:14:04 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:14:04 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:14:42 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:14:42 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:15:07 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:15:08 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:15:08 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:22:29 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:22:29 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:22:37 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:24:12 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:24:24 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:24:25 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:25:23 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:27:11 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:27:11 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:27:18 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:27:18 INFO football_monitor: Dashboard refreshed: league=English Premier League team_filter='' fetched=8 matched=8
+2026-10-28 14:30:00 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='' fetched=0 matched=0
+2026-10-28 14:30:00 ERROR football_monitor: Dashboard request failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 113, in index
+    config, matches, selected_date = get_dashboard_data()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 2)
+2026-10-28 14:30:00 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 14:30:00 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:30:00 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:30:21 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 14:30:21 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:30:21 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:30:47 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-31 team_filter='' fetched=8 matched=8
+2026-10-28 14:31:36 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 14:31:43 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-29 team_filter='' fetched=0 matched=0
+2026-10-28 14:31:50 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-30 team_filter='' fetched=0 matched=0
+2026-10-28 14:31:59 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-31 team_filter='' fetched=8 matched=8
+2026-10-28 14:32:11 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 14:37:09 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 14:37:09 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:37:09 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:37:09 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=1
+2026-10-28 14:37:50 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 14:37:50 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:37:50 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:37:50 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=1
+2026-10-28 14:37:53 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 14:37:53 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:37:54 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:37:54 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-28 14:37:54 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=8
+2026-10-28 14:40:45 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-28 14:40:45 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=8
+2026-10-28 14:41:12 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 14:41:13 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 14:41:21 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:41:22 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:41:38 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:41:39 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:43:02 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:43:07 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-28 14:43:07 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=8
+2026-10-28 14:52:16 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 14:52:16 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:52:16 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:52:16 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=1
+2026-10-28 14:53:17 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 14:53:17 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:53:17 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:53:17 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=1
+2026-10-28 14:54:10 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 14:54:11 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:54:11 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:54:12 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-28 14:55:42 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 14:55:42 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:55:42 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:55:42 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=1
+2026-10-28 14:56:13 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 14:56:14 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 14:56:14 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 14:56:14 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-28 14:59:56 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 14:59:56 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 14:59:56 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 14:59:56 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=1
+2026-10-28 15:00:32 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:00:32 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:00:37 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:00:39 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-28 15:00:39 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=8
+2026-10-28 15:00:50 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:00:50 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:04:17 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:04:20 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 15:04:21 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 15:04:23 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 15:04:24 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 15:04:27 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-28 15:04:27 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=8
+2026-10-28 15:04:35 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:04:35 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:05:27 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:05:30 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 15:05:30 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 15:08:54 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 15:08:54 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 15:08:54 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 15:08:54 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=1
+2026-10-28 15:09:50 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:09:51 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 15:09:51 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 15:09:51 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-28 15:10:34 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:10:34 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-28 15:10:34 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 15:10:35 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-28 15:12:16 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-25 team_filter='Arsenal' fetched=0 matched=0
+2026-10-28 15:12:16 INFO football_monitor: League table calculated: league=English Premier League teams=2
+2026-10-28 15:12:16 INFO football_monitor: Results page loaded: league=English Premier League matches=1 team_filter='chelsea'
+2026-10-28 15:12:16 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=1
+2026-10-28 15:12:24 INFO football_monitor: Script started
+2026-10-28 15:12:24 INFO football_monitor: League selected: English Premier League
+2026-10-28 15:12:27 INFO football_monitor: Number of matches processed: 8
+2026-10-28 15:12:27 INFO football_monitor: Output file created: C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\match_report.csv
+2026-10-28 15:12:43 INFO football_monitor: Script started
+2026-10-28 15:12:43 INFO football_monitor: League selected: English Premier League
+2026-10-28 15:12:43 ERROR football_monitor: Error encountered while running the football monitor
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\football_monitor.py", line 374, in run
+    events = fetch_scoreboard(config)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1167, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1171, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1226, in _execute_mock_call
+    raise effect
+TimeoutError: simulated timeout for logging evidence
+2026-10-28 15:14:19 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-28 15:14:21 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-28 15:14:21 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-28 team_filter='' fetched=0 matched=0
+2026-10-29 09:36:52 ERROR football_monitor: Dashboard request failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 1319, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1336, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1382, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1470, in connect
+    super().connect()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1001, in connect
+    self.sock = self._create_connection(
+                ~~~~~~~~~~~~~~~~~~~~~~~^
+        (self.host,self.port), self.timeout, self.source_address)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 840, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 192, in index
+    config, matches, selected_date = get_dashboard_data()
+                                     ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 45, in get_dashboard_data
+    events = fetch_scoreboard(selected_config, dates=selected_date.strftime("%Y%m%d"))
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\football_monitor.py", line 153, in fetch_scoreboard
+    with urlopen(request, timeout=config.request_timeout_seconds) as response:
+         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 489, in open
+    response = self._open(req, data)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 1322, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-10-29 09:36:56 ERROR football_monitor: Dashboard request failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 1319, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1336, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1382, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1470, in connect
+    super().connect()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1001, in connect
+    self.sock = self._create_connection(
+                ~~~~~~~~~~~~~~~~~~~~~~~^
+        (self.host,self.port), self.timeout, self.source_address)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 840, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 192, in index
+    config, matches, selected_date = get_dashboard_data()
+                                     ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 45, in get_dashboard_data
+    events = fetch_scoreboard(selected_config, dates=selected_date.strftime("%Y%m%d"))
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\football_monitor.py", line 153, in fetch_scoreboard
+    with urlopen(request, timeout=config.request_timeout_seconds) as response:
+         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 489, in open
+    response = self._open(req, data)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 1322, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-10-29 09:36:57 ERROR football_monitor: Dashboard request failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 1319, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1336, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1382, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1470, in connect
+    super().connect()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1001, in connect
+    self.sock = self._create_connection(
+                ~~~~~~~~~~~~~~~~~~~~~~~^
+        (self.host,self.port), self.timeout, self.source_address)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 840, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 192, in index
+    config, matches, selected_date = get_dashboard_data()
+                                     ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\web_app.py", line 45, in get_dashboard_data
+    events = fetch_scoreboard(selected_config, dates=selected_date.strftime("%Y%m%d"))
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Football workshop\football_monitor.py", line 153, in fetch_scoreboard
+    with urlopen(request, timeout=config.request_timeout_seconds) as response:
+         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 489, in open
+    response = self._open(req, data)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py", line 1322, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 11001] getaddrinfo failed>
+2026-10-29 09:37:30 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-29 team_filter='' fetched=0 matched=0
+2026-10-29 09:37:30 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-29 team_filter='' fetched=0 matched=0
+2026-10-29 09:47:32 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-29 09:47:32 INFO football_monitor: Results page loaded: league=English Premier League matches=80 team_filter=''
+2026-10-29 09:47:40 INFO football_monitor: League table calculated: league=English Premier League teams=20
+2026-10-29 09:47:43 INFO football_monitor: Team form loaded: league=English Premier League team='' matches=0
+2026-10-29 09:47:43 INFO football_monitor: Team form loaded: league=English Premier League team='Arsenal' matches=8
+2026-10-29 09:47:53 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-29 team_filter='' fetched=0 matched=0
+2026-10-29 09:47:53 INFO football_monitor: Dashboard refreshed: league=English Premier League date=2026-10-29 team_filter='' fetched=0 matched=0

@@ -1,0 +1,14 @@
+2026-10-28 11:24:57 ERROR tvmaze: Web search failed
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\QA\Day3\Tvmaze\app.py", line 42, in index
+    shows = search_shows(query, minimum_rating, include_unrated)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1167, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1171, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1226, in _execute_mock_call
+    raise effect
+urllib.error.URLError: <urlopen error simulated timeout for error-log verification>
+2026-10-28 11:29:06 INFO tvmaze: Web search completed; returned 2 results
